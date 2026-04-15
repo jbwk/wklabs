@@ -88,13 +88,14 @@
     <nav class="glass-nav fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <img src="https://github.com/joba-nyc/wklabs/blob/main/Scene-2.gif?raw=true" alt="W+K LABS" class="h-10 w-auto">
+                <img src="https://github.com/jbwk/wklabs/blob/main/wklabs-animated-logo.gif?raw=true" alt="W+K LABS" class="h-10 w-auto">
             </div>
-            <div class="hidden md:flex gap-8">
+            <div class="hidden md:flex items-center gap-8">
                 <a href="#tools" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Tools</a>
                 <a href="#privacy" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Privacy</a>
                 <a href="#requests" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Requests</a>
                 <a href="#learning" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Learning</a>
+                <a href="https://scheduler.zoom.us/joeb/wklabs-30min" target="_blank" class="px-5 py-2 bg-fuchsia-500 text-black text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform ml-2">Schedule Meeting</a>
             </div>
         </div>
     </nav>
@@ -292,7 +293,7 @@
                     Want to chat about a specific AI project or explore how AI can benefit your team, department, or account? Schedule a meeting with the W+K AI team to get started.
                 </p>
             </div>
-            <a href="https://scheduler.zoom.us/joeb/30min" target="_blank" class="shrink-0 px-8 py-4 bg-fuchsia-500 text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform text-center w-full md:w-auto">
+            <a href="https://scheduler.zoom.us/joeb/wklabs-30min" target="_blank" class="shrink-0 px-8 py-4 bg-fuchsia-500 text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform text-center w-full md:w-auto">
                 Schedule Meeting
             </a>
         </div>
