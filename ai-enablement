@@ -1,1 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W+K AI Tools Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --accent: #d946ef; /* Bright Magenta */
+            --text-main: #ffffff;
+            --text-dim: #a1a1aa;
+        }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem; /* Offsets the fixed nav height */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, .nav-link {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(217, 70, 239, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ffffff, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-tool {
+            border-left: 2px solid rgba(217, 70, 239, 0.3);
+            margin-left: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .policy-tag {
+            background: rgba(217, 70, 239, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(217, 70, 239, 0.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="https://github.com/joba-nyc/wklabs/blob/main/Scene-2.gif?raw=true" alt="W+K LABS" class="h-10 w-auto">
+            </div>
+            <div class="hidden md:flex gap-8">
+                <a href="#tools" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Tools</a>
+                <a href="#privacy" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Privacy</a>
+                <a href="#requests" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Requests</a>
+                <a href="#learning" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
+            <div class="max-w-3xl">
+                <p class="text-fuchsia-500 font-medium mb-4 uppercase tracking-widest text-sm">W+K IT Global • Enterprise AI</p>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Navigating W+K’s <br><span class="gradient-text">AI Ecosystem</span></h1>
+                <p class="text-zinc-400 text-lg md:text-xl leading-relaxed">
+                    While the AI landscape changes daily, our commitment to your creative workflow remains constant. Explore the enterprise tools vetted for security, speed, and creative excellence.
+                </p>
+            </div>
+            <div class="text-right border-l border-zinc-800 pl-6 hidden md:block">
+                <p class="text-xs uppercase text-zinc-500 mb-1">Last Updated</p>
+                <p class="text-sm font-medium">Apr 15, 2026</p>
+                <p class="text-xs text-zinc-500 mt-2">By Joe Bahar</p>
+            </div>
+        </div>
+
+        <div class="bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800 flex flex-col md:flex-row gap-6 items-center">
+            <div class="w-12 h-12 rounded-full bg-fuchsia-500/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-fuchsia-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <p class="text-zinc-300 text-sm">
+                <strong>A quick note from IT:</strong> We strive to keep this hub current, but AI moves fast. Reach out to <a href="mailto:it@wk.com" class="text-fuchsia-500 hover:underline">it@wk.com</a> with any questions about new features or access changes.
+            </p>
+        </div>
+    </header>
+
+    <!-- Tools Grid Section -->
+    <section id="tools" class="py-16 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-3xl font-bold uppercase tracking-tight">Available Tools</h2>
+            <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Main Tool: Google Gemini -->
+            <div class="tool-card rounded-2xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-bold">Google Gemini</h3>
+                        <a href="https://gemini.google.com" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-bold uppercase rounded hover:bg-fuchsia-500 transition">Launch</a>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Our main enterprise AI platform. Integrated across the Google Workspace ecosystem for seamless creative and operational support.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Nano Banana</h4>
+                            <p class="text-sm text-zinc-300">High-speed, high-fidelity image generation.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Veo</h4>
+                            <p class="text-sm text-zinc-300">High-definition video generation.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Canvas</h4>
+                            <p class="text-sm text-zinc-300">Interactive environment for building custom scripts and tools.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Custom Gems</h4>
+                            <p class="text-sm text-zinc-300">Chats that retain prompts and source documents for contextual conversations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Tool: Gemini Enterprise -->
+            <div class="tool-card rounded-2xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-bold text-white">Gemini Enterprise</h3>
+                        <a href="https://vertexaisearch.cloud.google.com/u/0/home/cid/c46d534e-76fc-4868-b725-07781031c489" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-bold uppercase rounded hover:bg-fuchsia-500 transition">Launch</a>
+                    </div>
+                    <p class="text-zinc-400 mb-8">Access to custom agents; purpose-built gems designed to handle specific, repetitive agency tasks.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">W+K Creative Agent</h4>
+                            <p class="text-sm text-zinc-300">Translates simple prompts into complex media outputs.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Deep Research Agent</h4>
+                            <p class="text-sm text-zinc-300">Complex, multi-source research and data synthesis.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">Idea Generation Agent</h4>
+                            <p class="text-sm text-zinc-300">Generates and competitively ranks ideas based on criteria.</p>
+                        </div>
+                        <div class="sub-tool">
+                            <h4 class="text-fuchsia-500 text-xs font-bold uppercase mb-1">BUILD A CUSTOM AGENT</h4>
+                            <p class="text-sm text-zinc-300">Schedule a meeting with us using the link at the bottom of this page.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Tools Row -->
+            <div class="tool-card rounded-2xl p-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">Google NotebookLM</h3>
+                    <a href="https://notebooklm.google.com" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-bold uppercase rounded hover:bg-fuchsia-500 transition">Launch</a>
+                </div>
+                <p class="text-sm text-zinc-400">Gather sources and documents to output bespoke media such as podcasts, videos, and reports.</p>
+            </div>
+
+            <div class="tool-card rounded-2xl p-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">Google Workspace Studio</h3>
+                    <a href="https://studio.workspace.google.com/u/0/" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-bold uppercase rounded hover:bg-fuchsia-500 transition">Launch</a>
+                </div>
+                <p class="text-sm text-zinc-400">Automation hub for creating seamless connections and custom workflows directly within your Google apps.</p>
+            </div>
+
+            <div class="tool-card rounded-2xl p-8 lg:col-span-2">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold">Adobe Firefly*</h3>
+                    <a href="https://firefly.adobe.com" target="_blank" class="px-4 py-2 bg-white text-black text-xs font-bold uppercase rounded hover:bg-fuchsia-500 transition">Launch</a>
+                </div>
+                <p class="text-sm text-zinc-400">Generative AI fully integrated into Creative Cloud. *Requires Adobe CC license.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="privacy" class="py-16 bg-zinc-950 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 max-w-2xl">
+                <h2 class="text-4xl font-bold mb-6">Your data is <span class="text-fuchsia-500">Secure.</span></h2>
+                <p class="text-zinc-400 leading-relaxed">
+                    When you use W+K’s AI tools using your Wieden+Kennedy account, your data is secure and <strong>not used for public training</strong>. Always ensure you are signed into your W+K profile.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
+                    <span class="policy-tag px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Data Training</span>
+                    <h4 class="text-lg font-bold mb-3">No Public Training</h4>
+                    <p class="text-zinc-400 text-sm">Our terms explicitly state your prompts and generated content are NOT used to train foundation models.</p>
+                </div>
+                <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
+                    <span class="policy-tag px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Privacy</span>
+                    <h4 class="text-lg font-bold mb-3">Strictly Private</h4>
+                    <p class="text-zinc-400 text-sm">Data is secured within W+K and not subject to human review except for strict compliance monitoring.</p>
+                </div>
+                <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
+                    <span class="policy-tag px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Compliance</span>
+                    <h4 class="text-lg font-bold mb-3">Enterprise Security</h4>
+                    <p class="text-zinc-400 text-sm">Fully integrated with Google Cloud security including VPC-SC, CMEK, and HIPAA support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Platform Request -->
+    <section id="requests" class="py-20 px-6 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6 uppercase">Need a different tool?</h2>
+        <p class="text-zinc-400 mb-10 leading-relaxed">
+            We understand that specific clients or projects may require Claude, ChatGPT, or other platforms. We want to help you use them safely.
+        </p>
+        <button onclick="window.open('https://help.wk.com/support/catalog/items/342', '_blank')" class="px-8 py-4 bg-fuchsia-500 text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform">
+            Platform Request Form
+        </button>
+    </section>
+
+    <!-- Learning Section -->
+    <section id="learning" class="py-16 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-3xl font-bold uppercase tracking-tight">Expand Your Knowledge</h2>
+            <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a href="https://ai.google/learn-ai-skills/" target="_blank" class="group bg-zinc-900/40 p-10 rounded-3xl border border-zinc-800 hover:bg-zinc-800/50 transition-all flex flex-col justify-between h-64">
+                <h3 class="text-2xl font-bold group-hover:text-fuchsia-500 transition">Google AI Learning Hub</h3>
+                <span class="text-zinc-500 text-sm uppercase tracking-widest font-bold">Direct Resources &rarr;</span>
+            </a>
+            <a href="https://wk.okta.com/home/bookmark/0oa1de287tp3V0TjF0x8/2557" target="_blank" class="group bg-zinc-900/40 p-10 rounded-3xl border border-zinc-800 hover:bg-zinc-800/50 transition-all flex flex-col justify-between h-64">
+                <h3 class="text-2xl font-bold group-hover:text-fuchsia-500 transition">W+K x OK Tomorrow</h3>
+                <span class="text-zinc-500 text-sm uppercase tracking-widest font-bold">Hands-on Hub &rarr;</span>
+            </a>
+            <a href="https://it.wk.com/ai" target="_blank" class="group bg-zinc-900/40 p-10 rounded-3xl border border-zinc-800 hover:bg-zinc-800/50 transition-all flex flex-col justify-between h-64">
+                <h3 class="text-2xl font-bold group-hover:text-fuchsia-500 transition">AI on IT Essentials</h3>
+                <span class="text-zinc-500 text-sm uppercase tracking-widest font-bold">Explore Use Cases &rarr;</span>
+            </a>
+        </div>
+
+        <div class="mt-16 bg-zinc-900/60 rounded-3xl p-8 md:p-12 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-8 cta-box">
+            <div class="max-w-2xl">
+                <h3 class="text-2xl font-bold mb-4">Let's build together.</h3>
+                <p class="text-zinc-400 text-lg leading-relaxed">
+                    Want to chat about a specific AI project or explore how AI can benefit your team, department, or account? Schedule a meeting with the W+K AI team to get started.
+                </p>
+            </div>
+            <a href="https://scheduler.zoom.us/joeb/30min" target="_blank" class="shrink-0 px-8 py-4 bg-fuchsia-500 text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform text-center w-full md:w-auto">
+                Schedule Meeting
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t border-zinc-900 px-6 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-sm">W+K IT GLOBAL</span>
+            </div>
+            <p class="text-zinc-500 text-sm">Questions? Contact <a href="mailto:it@wk.com" class="text-white hover:text-fuchsia-500">it@wk.com</a> or your local IT team.</p>
+            <p class="text-zinc-700 text-[10px] uppercase tracking-widest">© 2026 Wieden+Kennedy</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling fix for Google Sites Iframe
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevents the iframe from trying to navigate to a new page
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple Intersection Observer for scroll-linked animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.tool-card, #learning > div > a, .cta-box').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
