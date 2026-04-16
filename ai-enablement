@@ -95,7 +95,8 @@
                 <a href="#privacy" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Privacy</a>
                 <a href="#requests" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Requests</a>
                 <a href="#learning" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Learning</a>
-                <a href="https://scheduler.zoom.us/joeb/wklabs-30min" target="_blank" class="px-5 py-2 bg-fuchsia-500 text-black text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform ml-2">Schedule Meeting</a>
+                <a href="#playground" class="nav-link text-sm uppercase tracking-widest hover:text-fuchsia-500 transition">Playground</a>
+                <button id="openChatBtn" class="px-5 py-2 bg-fuchsia-500 text-black text-xs font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform ml-2">Ask a Question</button>
             </div>
         </div>
     </nav>
@@ -299,6 +300,57 @@
         </div>
     </section>
 
+    <!-- Playground Section -->
+    <section id="playground" class="py-16 px-6 max-w-7xl mx-auto border-t border-zinc-900">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-3xl font-bold uppercase tracking-tight">Playground</h2>
+            <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+        </div>
+        
+        <div class="bg-zinc-900/30 rounded-3xl p-8 border border-zinc-800 text-center relative overflow-hidden">
+            <!-- Decorative background blur -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-fuchsia-500/5 blur-[120px] pointer-events-none rounded-full"></div>
+            
+            <div class="relative z-10">
+                <h3 class="text-3xl font-bold mb-4">Wiedenism Paint-o-Matic</h3>
+                <p class="text-zinc-400 mb-10 max-w-2xl mx-auto">Click the button below to fill the empty wall with a W+K quote.</p>
+
+                <!-- Canvas Container -->
+                <div class="relative max-w-xl mx-auto bg-white rounded-2xl overflow-hidden aspect-square flex items-center justify-center border border-zinc-700 shadow-2xl group">
+                    <canvas id="artCanvas" width="1000" height="1000" class="w-full h-full object-cover hidden"></canvas>
+                    
+                    <!-- Placeholder State -->
+                    <div id="artPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-zinc-400 p-8">
+                        <p class="font-medium lowercase tracking-widest text-sm">a white wall</p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="artLoading" class="absolute inset-0 bg-black/80 flex flex-col items-center justify-center hidden backdrop-blur-md z-10 transition-all">
+                        <div class="w-12 h-12 border-4 border-fuchsia-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <p class="text-fuchsia-500 font-bold uppercase tracking-widest text-sm animate-pulse">Dreaming up art...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div id="artError" class="absolute inset-0 bg-black/90 flex flex-col items-center justify-center hidden backdrop-blur-md z-10 text-red-400">
+                        <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p class="font-bold uppercase tracking-widest text-sm">Creation failed. Try again.</p>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex flex-wrap justify-center gap-4">
+                    <button id="generateBtn" class="px-8 py-4 bg-fuchsia-500 text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z"></path></svg>
+                        PAINT THE WALL
+                    </button>
+                    <div id="saveInstruction" class="px-8 py-4 bg-zinc-800 text-zinc-400 font-bold uppercase tracking-widest rounded-full hidden items-center gap-2 border border-zinc-700 select-none cursor-default">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                        Right-Click Art to Save
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="py-12 bg-black border-t border-zinc-900 px-6 text-center">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
@@ -309,6 +361,32 @@
             <p class="text-zinc-700 text-[10px] uppercase tracking-widest">© 2026 Wieden+Kennedy</p>
         </div>
     </footer>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl flex-col z-[100] overflow-hidden transition-all duration-300 translate-y-8 opacity-0 pointer-events-none flex h-[500px] max-h-[80vh]">
+        <div class="bg-zinc-900 px-6 py-4 border-b border-zinc-800 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-fuchsia-500 rounded flex items-center justify-center font-bold text-black text-[10px]">W</div>
+                <h3 class="font-bold text-sm">W+K AI Assistant</h3>
+            </div>
+            <button id="closeChatBtn" class="text-zinc-400 hover:text-white transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div id="chatLog" class="flex-grow p-6 overflow-y-auto flex flex-col gap-4 text-sm scroll-smooth">
+            <div class="bg-zinc-800 text-zinc-200 self-start p-3 rounded-2xl rounded-tl-sm max-w-[85%]">
+                Hello! I can answer questions about W+K's AI tools, security policies, and learning resources. How can I help?
+            </div>
+        </div>
+        <div class="p-4 bg-zinc-900 border-t border-zinc-800">
+            <form id="chatForm" class="flex gap-2" onsubmit="event.preventDefault();">
+                <input type="text" id="chatInput" autocomplete="off" placeholder="Ask a question..." class="flex-grow bg-zinc-950 border border-zinc-800 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-fuchsia-500 transition-colors text-white placeholder-zinc-500">
+                <button type="submit" id="sendChatBtn" class="w-10 h-10 bg-fuchsia-500 text-black rounded-full flex items-center justify-center hover:scale-105 transition-transform flex-shrink-0">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Smooth scrolling fix for Google Sites Iframe
@@ -345,6 +423,278 @@
             el.style.transform = "translateY(20px)";
             el.style.transition = "all 0.6s ease-out";
             observer.observe(el);
+        });
+
+        // --- ART GENERATOR LOGIC ---
+        const quotes = [
+            "Walk in stupid every day",
+            "Ship of Fools",
+            "A white wall is a missed opportunity",
+            "No sharp stuff",
+            "Shut up when someone is talking",
+            "The Work Comes First",
+            "It’s not mathematics, it’s jazz",
+            "Independence is everything",
+            "Creativity is a place",
+            "Difficult is worth doing"
+        ];
+
+        const apiKey = "";
+        const canvas = document.getElementById('artCanvas');
+        const ctx = canvas.getContext('2d');
+        const generateBtn = document.getElementById('generateBtn');
+        const saveInstruction = document.getElementById('saveInstruction');
+        const placeholder = document.getElementById('artPlaceholder');
+        const loading = document.getElementById('artLoading');
+        const errorMsg = document.getElementById('artError');
+
+        // Text wrapping utility for Canvas
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            const words = text.split(' ');
+            let line = '';
+            let lines = [];
+
+            for(let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ';
+                let metrics = context.measureText(testLine);
+                if (metrics.width > maxWidth && n > 0) {
+                    lines.push(line.trim());
+                    line = words[n] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+            lines.push(line.trim());
+
+            // Center vertically
+            let totalHeight = lines.length * lineHeight;
+            let startY = y - (totalHeight / 2) + (lineHeight / 2);
+
+            for(let i = 0; i < lines.length; i++) {
+                context.fillText(lines[i], x, startY + (i * lineHeight));
+            }
+        }
+
+        // Fetch with exponential backoff for reliability
+        async function fetchWithRetry(url, options, retries = 5) {
+            const delays = [1000, 2000, 4000, 8000, 16000];
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return await response.json();
+                } catch (error) {
+                    if (i === retries - 1) throw error;
+                    await new Promise(res => setTimeout(res, delays[i]));
+                }
+            }
+        }
+
+        async function generateArt() {
+            // Update UI State
+            placeholder.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            canvas.classList.add('hidden');
+            loading.classList.remove('hidden');
+            saveInstruction.classList.add('hidden');
+            generateBtn.disabled = true;
+            generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            
+            // Randomize visual style prompts for maximum variety
+            const styles = [
+                "punk rock collage", "vibrant abstract expressionism", 
+                "messy creative graphic design", "neon cyberpunk distortion", 
+                "bold bauhaus geometric shapes", "psychedelic colorful fluid simulation", 
+                "irreverent surrealist dreamscape", "street art graffiti explosion",
+                "high contrast monochromatic with one vibrant accent color",
+                "glitch art aesthetic"
+            ];
+            const randomStyle = styles[Math.floor(Math.random() * styles.length)];
+            const prompt = `Abstract background art, ${randomStyle}, vivid vibrant colors, highly creative, no text, texture, modern, irreverent, 4k resolution`;
+
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+                const result = await fetchWithRetry(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: { prompt: prompt },
+                        parameters: { sampleCount: 1 }
+                    })
+                });
+
+                const base64Image = result.predictions[0].bytesBase64Encoded;
+                const imageUrl = `data:image/png;base64,${base64Image}`;
+
+                // Process and draw onto canvas
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    // Add subtle dark overlay to ensure text is always readable
+                    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // Setup Typography for Quote
+                    ctx.fillStyle = 'white';
+                    
+                    ctx.font = 'bold 90px "Inter", sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+
+                    wrapText(ctx, randomQuote.toUpperCase(), canvas.width / 2, canvas.height / 2, canvas.width - 160, 110);
+
+                    // Add W+K LABS Signature
+                    ctx.font = 'bold 28px "Inter", sans-serif';
+                    ctx.letterSpacing = "4px";
+                    
+                    ctx.fillText("W+K LABS", canvas.width / 2, canvas.height - 80);
+
+                    // Reveal completed art
+                    loading.classList.add('hidden');
+                    canvas.classList.remove('hidden');
+                    saveInstruction.classList.remove('hidden');
+                    saveInstruction.classList.add('flex');
+                    
+                    generateBtn.disabled = false;
+                    generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                };
+                img.src = imageUrl;
+
+            } catch (error) {
+                console.error("Art Generation Error:", error);
+                loading.classList.add('hidden');
+                errorMsg.classList.remove('hidden');
+                
+                generateBtn.disabled = false;
+                generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        generateBtn.addEventListener('click', generateArt);
+
+        // --- CHATBOT LOGIC ---
+        const chatWidget = document.getElementById('chatWidget');
+        const openChatBtn = document.getElementById('openChatBtn');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatLog = document.getElementById('chatLog');
+        const chatForm = document.getElementById('chatForm');
+        const chatInput = document.getElementById('chatInput');
+        const sendChatBtn = document.getElementById('sendChatBtn');
+
+        let chatHistory = [];
+
+        // The system prompt teaches the bot about the specific contents of your site
+        const systemPrompt = `You are a helpful IT assistant for the W+K (Wieden+Kennedy) AI Tools Hub.
+        Answer questions based ONLY on the following information about our tools and policies. Keep answers concise, friendly, and professional. 
+
+        Available Tools:
+        - Google Gemini: Main enterprise AI platform. Includes Nano Banana (images), Veo (video), Canvas (custom scripts), and Custom Gems (contextual chats).
+        - Gemini Enterprise: Access to custom agents like W+K Creative Agent, Deep Research Agent, Idea Generation Agent, and the ability to Build a Custom Agent.
+        - Google NotebookLM: Gather sources to output podcasts, videos, reports.
+        - Adobe Firefly: Generative AI in Creative Cloud (requires Adobe CC license).
+        - Google Workspace Studio: Automation hub for Google apps.
+
+        Privacy & Security:
+        - Data is secure and NOT used for public training.
+        - Strictly private, not subject to human review.
+        - Enterprise-grade security (Google Cloud, VPC-SC, CMEK, HIPAA).
+
+        Other Info:
+        - Need a different tool? Fill out the Platform Request Form.
+        - Learning resources available: Google AI Learning Hub, W+K x OK Tomorrow, AI on IT Essentials.
+        - To schedule a meeting or build a custom agent, use the scheduler link.`;
+
+        function toggleChat() {
+            const isHidden = chatWidget.classList.contains('opacity-0');
+            if (isHidden) {
+                chatWidget.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+                chatInput.focus();
+            } else {
+                chatWidget.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+            }
+        }
+
+        openChatBtn.addEventListener('click', toggleChat);
+        closeChatBtn.addEventListener('click', toggleChat);
+
+        function addMessageToUI(text, isUser) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = isUser
+                ? 'bg-fuchsia-500 text-black self-end p-3 rounded-2xl rounded-tr-sm max-w-[85%] font-medium'
+                : 'bg-zinc-800 text-zinc-200 self-start p-3 rounded-2xl rounded-tl-sm max-w-[85%]';
+            msgDiv.innerText = text;
+            chatLog.appendChild(msgDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function addLoadingToUI() {
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'chatLoadingBubble';
+            loadingDiv.className = 'bg-zinc-800 text-zinc-400 self-start p-4 rounded-2xl rounded-tl-sm flex items-center gap-2';
+            loadingDiv.innerHTML = '<div class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce"></div><div class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce" style="animation-delay: 0.15s"></div><div class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce" style="animation-delay: 0.3s"></div>';
+            chatLog.appendChild(loadingDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+
+        function removeLoadingFromUI() {
+            const loadingDiv = document.getElementById('chatLoadingBubble');
+            if (loadingDiv) loadingDiv.remove();
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // UI Updates
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendChatBtn.disabled = true;
+            addMessageToUI(message, true);
+            addLoadingToUI();
+
+            // Add to history payload
+            chatHistory.push({ role: 'user', parts: [{ text: message }] });
+
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: chatHistory,
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const result = await fetchWithRetry(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!result.candidates || !result.candidates[0]) {
+                    throw new Error("Invalid response from API");
+                }
+
+                const botResponse = result.candidates[0].content.parts[0].text;
+
+                // Add bot response to history payload
+                chatHistory.push({ role: 'model', parts: [{ text: botResponse }] });
+
+                removeLoadingFromUI();
+                addMessageToUI(botResponse, false);
+
+            } catch (error) {
+                console.error("Chat Error:", error);
+                removeLoadingFromUI();
+                addMessageToUI("Sorry, I encountered an error. " + (error.message || "Please try again later."), false);
+                // Remove the failed user message from history so context isn't corrupted
+                chatHistory.pop();
+            } finally {
+                chatInput.disabled = false;
+                sendChatBtn.disabled = false;
+                chatInput.focus();
+            }
         });
     </script>
 </body>
